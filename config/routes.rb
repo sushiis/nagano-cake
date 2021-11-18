@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :customers
-  
+
   #public_customers
   get "/customers/my_page" => "public/customers#show"
   get "/customers/edit" => "public/customers#edit"
