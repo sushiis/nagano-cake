@@ -37,7 +37,7 @@ end
     #admin_orders
     resources :orders, only: [:index, :show, :update] do
       #admin_order_items
-      resource :order_items, only: [:update]
+      resource :order_details, only: [:update]
     end
   end
 
