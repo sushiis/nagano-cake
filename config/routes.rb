@@ -1,28 +1,31 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :customers
 
+scope module: :customer do
   #public_customers
-  get "/customers/my_page" => "public/customers#show"
-  get "/customers/edit" => "public/customers#edit"
-  patch "/customers" => "public/customers#update"
-  get "/customers/unsubscribe" => "public/customers#unsubscribe"
-  patch "/customers/withdraw" => "public/customers#withdraw"
+  get "/customers/my_page" => "customer/customers#show"
+  get "/customers/edit" => "customer/customers#edit"
+  patch "/customers" => "customer/customers#update"
+  get "/customers/unsubscribe" => "customer/customers#unsubscribe"
+  patch "/customers/withdraw" => "customer/customers#withdraw"
 
   #public_homes
-  root to: "public/homes#top"
-  get "/about" => "public/hoems#about"
+  root to: "customer/homes#top"
+  get "/about" => "customer/hoems#about"
 
   #public_items
   resources :items, only: [:index, :show]
   #public_cart_items
   resources :cart_items, only: [:index, :update, :create, :destroy]
-  delete "/cart_items/destroy_all" => "public/cart_items#all_destroy"
+  delete "/cart_items/destroy_all" => "customer/cart_items#all_destroy"
   #public_orders
   resources :orders, only: [:index, :show, :new, :create]
-  post "/orders/confirm" => "public/orders#confirm"
-  get "/thanx" => "public/orders#thanx"
+  post "/orders/confirm" => "customer/orders#confirm"
+  get "/thanx" => "customer/orders#thanx"
   #public_addresses
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+end
 
   namespace :admin do
     #admin_customers
