@@ -9,9 +9,12 @@
   </head>
 
   <body>
-    <header class="d-flex flex-column vh-100">
+    <header class="border-bottom d-flex flex-column">
       <%= render "layouts/header" %>
     </header>
     <%= yield %>
+    <footer class="border-top">
+      <%= render "layouts/footer" %>
+    </footer>
   </body>
 </html>
