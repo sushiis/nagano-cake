@@ -18,7 +18,35 @@
  @import "font-awesome";
 
  *{
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
+ header{
+  height: 100px;
+  width: 100%;
+ }
+
+ .btn-margin{
+  margin: 10px;
+ }
+
+ footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+ }
+
+ .top-margin{
+  margin: 50px;
+ }
+
+ .welcome-top{
+  width: 50%;
+  height: 300px;
+  font-size: 20px;
+  background-image: image-url("cake.jpg");
+  background-size: cover;
+  margin-bottom: 0;
  }
