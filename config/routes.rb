@@ -27,7 +27,7 @@ scope module: :customers do
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
 end
 
-  namespace :admin do
+  namespace :admins do
     #admin_customers
     resources :customers, only: [:index, :show, :edit, :update]
     #admin_items
