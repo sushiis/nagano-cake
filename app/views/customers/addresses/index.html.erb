@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h2>配送先登録/一覧</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <th>郵便番号（ハイフンなし）</th><br>
+      <th>住所</th><br>
+      <th>宛名</th>
+    </div>
+    <div class="col">
+      <td><%= button_to "新規登録" %></td>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>111111</td>
+            <td>神奈川県あああああ</td>
+            <td>梅木匡</td>
+            <td><%= button_to "編集する" %><%= button_to "削除する" %></td>
+          </tr>
+          <tr>
+            <td>222222</td>
+            <td>山梨県ああああああ</td>
+            <td>山田太郎</td>
+            <td><%= button_to "編集する" %><%= button_to "削除する" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

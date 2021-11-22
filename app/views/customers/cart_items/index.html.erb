@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col"><h2>ショッピングカート</h2></div>
+    <div class="col">カートを空にする</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">商品名</th>
+            <th scope="col">単価(税込)</th>
+            <th scope="col">数量</th>
+            <th scope="col">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><%= image_tag "images.jpg", size: "50x40" %>  チョコレートケーキ</th>
+            <td>2,000</td>
+            <td>2  変更</td>
+            <td>2,000</td>
+            <td>削除する</td>
+          </tr>
+          <tr>
+            <th scope="row"><%= image_tag "images.jpg", size: "50x40" %>  ショートケーキ</th>
+            <td>2,000</td>
+            <td>2  変更</td>
+            <td>2,000</td>
+            <td>削除する</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">買い物を続ける</div>
+    <div class="col">
+      <table class="table table-bordered">
+        <td>合計金額</td>
+        <td>¥4,000</td>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">情報入力に進む</div>
+  </div>
+
+</div>
