@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>商品紹介</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p><%= image_tag "images.jpg", size: "400x320" %></p>
+    </div>
+    <div class="col">
+<table class="table-borderless ">
+  <tbody>
+    <tr>
+      <th scope="col">商品名</th>
+      <td>チョコレートケーキ</td>
+    </tr>
+    <tr>
+      <th scope="row">商品説明</th>
+      <td>チョコレートケーキです。</td>
+    </tr>
+    <tr>
+      <th scope="row">ジャンル</th>
+      <td>ケーキ</td>
+    </tr>
+    <tr>
+      <th scope="row">税込価格<br>(税抜価格)</th>
+      <td>2,200(2,000)円</td>
+    </tr>
+    <tr>
+      <th scope="row">販売ステータス</th>
+      <td>販売中</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <%= button_to "編集する" %>
+    </div>
+  </div>
+</div>
