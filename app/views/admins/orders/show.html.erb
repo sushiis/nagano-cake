@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <h2>注文履歴詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-10">
+      <table class="table">
+        <tr>
+          <th>購入者</th>
+          <th>山田花子</th>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <th>2019/11/20</th>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <th>〒150-0041 東京都渋谷区神南1丁目19-11 パークウェースクエア24階<br/>山田花子</th>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <th>銀行振込</th>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <th>入金待ち<%= link_to "更新", about_path, class:"btn btn-success" %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9">
+      <table class="table">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>洋梨のチーズタルト</th>
+          <th>1,320</th>
+          <th>1</th>
+          <th>1,320</th>
+          <th>着手不可</th>
+          <th><%= link_to "更新", about_path, class:"btn btn-success" %></th>
+        </tr>
+        <tr>
+          <th>なめらかプリン</th>
+          <th>220</th>
+          <th>5</th>
+          <th>1,100</th>
+          <th>着手不可</th>
+          <th><%= link_to "更新", about_path, class:"btn btn-success" %></th>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-3">
+      <table class="table">
+        <tr>
+          <th scope="col">商品合計</th>
+          <th>6,490円</th>
+        </tr>
+        <tr>
+          <th scope="col">送料</th>
+          <th>800円</th>
+        </tr>
+        <tr>
+          <th scope="col">請求金額合計</th>
+          <th>7,290円</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
