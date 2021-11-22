@@ -4,7 +4,7 @@
       <h2>商品一覧</h2>
     </div>
     <div class="col">
-      <%= button_to "新規作成" %>
+      <%= link_to "＋", new_admins_item_path, class: "btn btn-success rounded-circle p-2" %>
     </div>
   </div>
   <div class="row">
@@ -19,27 +19,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>洋梨のチーズタルト</td>
-          <td>1,200</td>
-          <td>ケーキ</td>
-          <td>販売中</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>モンブラン</td>
-          <td>500</td>
-          <td>ケーキ</td>
-          <td>販売中</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>フルーツタルト</td>
-          <td>500</td>
-          <td>ケーキ</td>
-          <td>販売中</td>
-        </tr>
+        <% @items.each do |item| %>
+          <tr>
+            <th scope="row"><%= item.id %></th>
+            <td><%= item.name %></td>
+            <td><%= item.price %></td>
+            <td><%= genres.name %></td>
+            <td><%= item.status %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
