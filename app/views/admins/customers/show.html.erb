@@ -1,40 +1,46 @@
 <div class="container">
   <div class="row">
-    <h2>山田花子さんの会員詳細</h2>
+    <h2><%= @customer.last_name %><%= @customer.farst_name %>さんの会員詳細</h2>
   </div>
   <div class="row">
     <table class="table">
       <tr>
         <th>会員ID</th>
-        <th>1</th>
+        <th><%= @customer.id %></th>
       </tr>
       <tr>
         <th>氏名</th>
-        <th>山田　花子</th>
+        <th><%= @customer.last_name %><%=@customer.farst_name %></th>
       </tr>
       <tr>
         <th>フリガナ</th>
-        <th>ヤマダハナコ</th>
+        <th><%= @customer.last_name_kana %><%=@customer.farst_name_kana %></th>
       </tr>
       <tr>
         <th>郵便番号</th>
-        <th>1500041</th>
+        <th><%= @customer.postal_code %></th>
       </tr>
       <tr>
         <th>住所</th>
-        <th>東京都渋谷区神南1丁目19-11　パークウェースクエア24階</th>
+        <th><%= @customer.address %></th>
       </tr>
       <tr>
         <th>電話番号</th>
-        <th>0368694700</th>
+        <th><%= @customer.telephone_number %></th>
       </tr>
       <tr>
         <th>メールアドレス</th>
-        <th>hogeexample.com</th>
+        <th><%= @customer.email %></th>
       </tr>
       <tr>
         <th>会員ステータス</th>
-        <th>有効</th>
+        <th>
+          <% if @customer.is_subscribed == false %>
+            <span class="text-success">有効</span>
+          <% else %>
+            <span class="text-secondary">退会</span>
+          <% end %>
+        </th>
       </tr>
       <tr>
         <th></th>

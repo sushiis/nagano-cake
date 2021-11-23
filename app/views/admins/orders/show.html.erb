@@ -7,23 +7,32 @@
       <table class="table">
         <tr>
           <th>購入者</th>
-          <th>山田花子</th>
+          <th>
+            <%= link_to admins_customer_path(@order.customer) do %>
+            <%= @order.customer.last_name %>
+            <%= @order.customer.farst_name %>
+            <% end %>
+          </th>
         </tr>
         <tr>
           <th>注文日</th>
-          <th>2019/11/20</th>
+          <th><%= @order.created_at %></th>
         </tr>
         <tr>
           <th>配送先</th>
-          <th>〒150-0041 東京都渋谷区神南1丁目19-11 パークウェースクエア24階<br/>山田花子</th>
+          <th><%= @order.postal_code %>  <%= @order.address %><br/><%= @order.customer.name %></th>
         </tr>
         <tr>
           <th>支払方法</th>
-          <th>銀行振込</th>
+          <th><%= @order.way %></th>
         </tr>
         <tr>
           <th>注文ステータス</th>
-          <th>入金待ち<%= link_to "更新", about_path, class:"btn btn-success" %></th>
+          <th>
+            <%= form_with(model: @order, url: admins_order_path, local: true, class: "form-row") do |f| %>
+            <%= f.select :status, Order.statuses.keys.to_a %>
+            <%= link_to "更新", admins_order_path, class:"btn btn-success" %>
+          </th>
         </tr>
       </table>
     </div>
@@ -39,37 +48,33 @@
           <th>製作ステータス</th>
           <th></th>
         </tr>
-        <tr>
-          <th>洋梨のチーズタルト</th>
-          <th>1,320</th>
-          <th>1</th>
-          <th>1,320</th>
-          <th>着手不可</th>
-          <th><%= link_to "更新", about_path, class:"btn btn-success" %></th>
-        </tr>
-        <tr>
-          <th>なめらかプリン</th>
-          <th>220</th>
-          <th>5</th>
-          <th>1,100</th>
-          <th>着手不可</th>
-          <th><%= link_to "更新", about_path, class:"btn btn-success" %></th>
-        </tr>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <th><%= order_detail.item.name %></th>
+            <th><%= order_detail.price %></th>
+            <th><%= order.order_detail.amounto %></th>
+            <th><%= (order_detail.price * order_detail.amounto) %></th>
+            <%= form_with(model: order_detail, url: admins_order_order_details_path(order_detail), local: true) do |f| %>
+              <th><%= f.select :making_status, OrderDetail.making_statuses.keys.to_a %></th>
+              <th><%= f.submit "更新", class:"btn btn-success" %></th>
+            <% end %>
+          </tr>
+        <% end %>
       </table>
     </div>
     <div class="col-lg-3">
       <table class="table">
         <tr>
           <th scope="col">商品合計</th>
-          <th>6,490円</th>
+          <th><%= (@order.total_price - @order.postage) %></th>
         </tr>
         <tr>
           <th scope="col">送料</th>
-          <th>800円</th>
+          <th><%= @order.postage %></th>
         </tr>
         <tr>
           <th scope="col">請求金額合計</th>
-          <th>7,290円</th>
+          <th><%= @order.total_price %> </th>
         </tr>
       </table>
     </div>
