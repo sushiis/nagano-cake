@@ -4,7 +4,7 @@ class Customers::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    @customer.update(is_deleted: true)
+    @customer.update(is_subscribed: true)
     reset_session
     flash[:notice] = "退会処理が完了しました。"
     redirect_to root_path
