@@ -2,7 +2,7 @@
   <div class="row">
     <h2>商品新規登録</h2>
   </div>
-  <%= form_with model: @items, local:true do |f| %>
+  <%= form_with model: @item, url: admins_items_path, local:true do |f| %>
   <div class="row">
     <div class="col-lg-7, mx-auto">
       <table>
@@ -21,9 +21,7 @@
         <tr>
           <th>ジャンル</th>
           <th>
-            <%= fields_for(:genres) do |i| %>
-            <%= i.select :name, Genre.all , {include_brank: '_____' } %>
-            <% end %>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
           </th>
         </tr>
         <tr>
@@ -35,11 +33,11 @@
           <th>
 
           <div class="form-check">
-          <%= f.radio_button :statsu, :sell %>
-          <%= f.label :status_sell, "販売中" %>
+          <%= f.radio_button :status, true %>
+          <%= f.label :status, "販売中" %>
 
-          <%= f.radio_button :statsu, :discontinued %>
-          <%= f.label :status_sell, "販売停止中" %>
+          <%= f.radio_button :status, false %>
+          <%= f.label :status, "販売停止中" %>
           </div>
 
           </th>
@@ -49,7 +47,7 @@
   </div>
   <div class="row">
     <div class="col-lg-2, mx-auto">
-      <%= button_to "新規登録",  admins_item_path, class:"btn btn-success" %>
+       <%= f.submit "新規登録", class: "btn btn-success" %>
     </div>
   </div>
   <% end %>
