@@ -24,8 +24,14 @@
             <th scope="row"><%= item.id %></th>
             <td><%= item.name %></td>
             <td><%= item.price %></td>
-            <td><%= genres.name %></td>
-            <td><%= item.status %></td>
+            <td><%= item.genre.name %></td>
+            <td>
+              <% if item.status == true %>
+                  <span class = "text-success">販売中</span>
+              <% else %>
+                  <span class = "text-danger">販売停止中</span>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
