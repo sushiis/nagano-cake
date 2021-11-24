@@ -3,9 +3,15 @@
     <h2>ジャンル一覧・追加</h2>
   </div>
   <div class="row">
-    <div class="col-lg-2">ジャンル名</div>
-    <div class="col-lg-3">ジャンル名入力ボックス</div>
-    <div class="col-lg-2">新規登録ボタン</div>
+    <table>
+      <tr>
+        <%= form_with model: @genre, url: admins_genres_path, local:true do |f| %>
+          <th>ジャンル名</th>
+          <th><%= f.text_field :name %></th>
+          <th><%= f.submit "新規登録", class: "btn btn-success" %></th>
+        <% end %>
+      </tr>
+    </table>
   </div>
   <div class="row">
     <div class="col-lg-5">
@@ -14,22 +20,12 @@
           <th>ジャンル</th>
           <th></th>
         </tr>
-        <tr>
-          <th>ケーキ</th>
-          <th><%= link_to "編集する", about_path, class:"btn btn-success" %></th>
-        </tr>
-        <tr>
-          <th>プリン</th>
-          <th><%= link_to "編集する", about_path, class:"btn btn-success" %></th>
-        </tr>
-        <tr>
-          <th>焼き菓子</th>
-          <th><%= link_to "編集する", about_path, class:"btn btn-success" %></th>
-        </tr>
-        <tr>
-          <th>キャンディ</th>
-          <th><%= link_to "編集する", about_path, class:"btn btn-success" %></th>
-        </tr>
+        <% @genres.each do |genre| %>
+          <tr>
+            <th><%= genre.name %></th>
+            <th><%= link_to "編集する", edit_admins_genre_path(genre.id), class:"btn btn-success" %></th>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>
