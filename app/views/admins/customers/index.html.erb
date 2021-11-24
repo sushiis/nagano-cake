@@ -14,12 +14,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <th>tarou</th>
-            <th>xxxxxx@xxxxx</th>
-            <th>有効</th>
-          </tr>
+          <% @customers.each do |customer| %>
+            <tr>
+              <th><%= customer.id %></th>
+              <th><%= link_to admins_customer_path(customer.id) do %><%= customer.last_name %><%= customer.farst_name %><% end %></th>
+              <th><%= customer.email %></th>
+              <th>
+                <% if @customer.is_subscribed == false %>
+                  <span class="text-success">有効</span>
+                <% else %>
+                  <span class="text-secondary">退会</span>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
         </tbody>
       </div>
     </table>

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~>1.3.0'
 # Use Puma as the app server
@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -53,3 +55,5 @@ gem "refile-mini_magick"
 gem "bootstrap", "~> 4.5"
 gem "font-awesome-sass", "~>5.13"
 gem "kaminari"
+
+gem "enum_help"

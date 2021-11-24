@@ -1,0 +1,57 @@
+<div class ="container">
+  <div class ="row">
+    <div class="col-md-9 mt-5">
+
+    <h3 class ="title">注文情報入力</h3>
+      <h4>支払方法</h4>
+      <div class ="item">
+        <label>
+          <%= f.radio_button :payment_method, :"クレジットカード" %>クレジットカード
+        </label>
+        <label>
+          <%= f.radio_button :payment_method, :"銀行振込" %>銀行振込
+        </label>
+      </div>
+
+      <h4 class ="mt-4">お届け先</h4>
+      <div class ="item">
+        <div class ="customer_address">
+          <label>
+            ご自身の住所</br>
+            〒</br>
+          </label>
+        </div>
+      </div>
+
+      <div class ="record_address">
+        <label>
+          登録済住所から選択</br>
+        </label>
+      </div>
+
+      <div class ="new_address">
+        <label></br>
+          新しいお届け先</br>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>郵便番号(ハイフンなし)</td>
+                <td><%= f.text_field %></td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td><%= f.text_field %></td>
+              </tr>
+              <tr>
+                <td>宛名</td>
+                <td><%= f.text_field %></td>
+              </tr>
+            </tbody>
+          </table>
+        </label>
+      </div>
+      <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
