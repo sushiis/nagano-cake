@@ -1,13 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <th>郵便番号（ハイフンなし）</th><br>
-      <th>住所</th><br>
-      <th>宛名</th>
-    </div>
-    <div class="col">
-      <td><%= button_to "変更内容を保存" %></td>
+    <div class="col-6 col-offset-3">
+      <h4 class="address-index">配送先編集</h4>
     </div>
   </div>
-
+  <div class="row mb-3">
+    <div class="col">
+      <%= form_with model:@addresses do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>郵便番号（ハイフンなし）</td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, size: 50 %></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit '変更内容を保存', class: 'btn btn-success' %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
 </div>
