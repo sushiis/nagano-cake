@@ -3,14 +3,8 @@
     <h2>ジャンル編集</h2>
   </div>
   <div class="row">
-    <%= form_with model: @genre, url: admins_genre_path, local:true do |f| %>
-      <table>
-        <tr>
-          <th>ジャンル名</th>
-          <th><%= f.text_field :name %></th>
-          <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
-        </tr>
-      </table>
-    <% end %>
-  </div>
-</div>
+    <div class="col-lg-2"><h5>ジャンル名</h5></div>
+    <div class="col-lg-2">ジャンル名入力ボックス</div>
+    <div class="col-lg-2">変更を保存ボタン</div>
+  </div>>
+</div
