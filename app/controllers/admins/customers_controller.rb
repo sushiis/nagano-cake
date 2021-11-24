@@ -14,4 +14,5 @@ class Admins::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
   end
+
 end
