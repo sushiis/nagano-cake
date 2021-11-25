@@ -10,7 +10,7 @@
       <h4>登録情報</h4>
     </div>
     <div class="col-2 ">
-      <%= link_to "編集する", edit_customers_path, class: 'btn btn-success' %>
+      <%= link_to "編集する", customers_edit_path, class: 'btn btn-success' %>
     </div>
   </div>
   <div class="row">
@@ -20,15 +20,15 @@
           <tr>
             <th class="table-secondary">氏名</th>
             <th>
-              <%= @customer.family_name %>
-              <%= @customer.first_name %>
+              <%= @customer.last_name %>
+              <%= @customer.farst_name %>
             </th>
           </tr>
           <tr>
             <th class="table-secondary">カナ</th>
             <th>
-              <%= @customer.family_name_kana %>
-              <%= @customer.first_name_kana %>
+              <%= @customer.last_name_kana %>
+              <%= @customer.farst_name_kana %>
             </th>
           </tr>
           <tr>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <th class="table-secondary">電話番号</th>
-            <th><%= @customer.phone %></th>
+            <th><%= @customer.telephone_number %></th>
           </tr>
           <tr>
             <th class="table-secondary">メールアドレス</th>
@@ -57,7 +57,7 @@
       <h4>配送先</h4>
     </div>
     <div class="col-2 ">
-      <%= link_to "一覧を見る", shipping_addresses_path, class: 'btn btn-primary' %>
+      <%= link_to "一覧を見る", addresses_path, class: 'btn btn-primary' %>
     </div>
   </div>
   <div class="row mb-3">
