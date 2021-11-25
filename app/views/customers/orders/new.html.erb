@@ -5,12 +5,11 @@
     <h3 class ="title">注文情報入力</h3>
       <h4>支払方法</h4>
       <div class ="item">
-        <label>
-          <%= f.radio_button :payment_method, :"クレジットカード" %>クレジットカード
-        </label>
-        <label>
-          <%= f.radio_button :payment_method, :"銀行振込" %>銀行振込
-        </label>
+        <div>
+          <%= f.radio_button :way, :"クレジットカード" %>クレジットカード
+
+          <%= f.radio_button :way, :"銀行振込" %>銀行振込
+        </div>
       </div>
 
       <h4 class ="mt-4">お届け先</h4>
