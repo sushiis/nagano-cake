@@ -7,11 +7,13 @@
   <tbody>
   <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
      <% @items.each do |item| %>
+     <%= link_to item_path(item.id) do %>
         <div class="card mb-3 shadow-sm">
           <p><%= attachment_image_tag item, :image, size: "200x160" %></p>
           <p><%= item.name %></p>
           <p>¥<%= item.price %></p>
         </div>
+    <% end %> 
 　　<% end %>
 
     </div>

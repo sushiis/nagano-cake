@@ -28,8 +28,9 @@ scope module: :customers do
   #public_items
   resources :items, only: [:index, :show]
   #public_cart_items
+  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   resources :cart_items, only: [:index, :update, :create, :destroy]
-  delete "/cart_items/destroy_all" => "cart_items#all_destroy"
+
   #public_orders
   resources :orders, only: [:index, :show, :new, :create]
   post "/orders/confirm" => "orders#confirm"
