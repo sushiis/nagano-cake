@@ -22,7 +22,7 @@
         <% @items.each do |item| %>
           <tr>
             <th scope="row"><%= item.id %></th>
-            <td><%= item.name %></td>
+            <td><%= link_to item.name, admins_item_path(item.id) %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
             <td>

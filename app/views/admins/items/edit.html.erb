@@ -1,40 +1,49 @@
 <div class="container">
   <div class="row">
-    <h2>商品編集</h2>
-  </div>
-  <div class="row">
-    <div class="col-lg-7, mx-auto">
-      <table>
-        <tr>
-          <th>商品画像</th>
-          <th>画像選択フォーム</th>
-        </tr>
-        <tr>
-          <th>商品名</th>
-          <th>商品名フォーム</th>
-        </tr>
-        <tr>
-          <th>商品説明</th>
-          <th>商品説明フォーム</th>
-        </tr>
-        <tr>
-          <th>ジャンル</th>
-          <th>ジャンル選択フォーム</th>
-        </tr>
-        <tr>
-          <th>税抜価格</th>
-          <th>価格入力フォーム</th>
-        </tr>
-        <tr>
-          <th>販売ステータス</th>
-          <th>販売ステータス選択フォーム</th>
-        </tr>
-      </table>
+    <div class="col-2 offset-1">
+      <h4 class="products-index">商品編集</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-2, mx-auto">
-      <%= link_to "変更を保存", about_path, class:"btn btn-success" %>
+    <div class="col-6 offset-3">
+      <%= form_with model: @item, url: admins_item_path(@item.id), local:true do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>商品画像</td>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
+          <tr>
+            <td>商品名</td>
+            <td><%= f.text_field :name, size: 30 %></td>
+          </tr>
+          <tr>
+            <td>商品説明文</td>
+            <td><%= f.text_area :introduction, size: "30x10" %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name,:include_blank => "選択してください", size: 30 %></td>
+          </tr>
+          <tr>
+            <td>税抜価格</td>
+            <td><%= f.text_field :price, size: 30 %>円</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <%= f.radio_button :status, :true %>
+              <%= f.label :status, "販売中", {value: :true, style: "display: inline-block;"} %>
+              <%= f.radio_button :status, :false %>
+              <%= f.label :status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+        </tbody>
+      </table>
+      <% end %>
     </div>
   </div>
 </div>

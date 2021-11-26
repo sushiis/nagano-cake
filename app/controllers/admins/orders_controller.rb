@@ -1,5 +1,10 @@
 class Admins::OrdersController < ApplicationController
 
+
+
+  before_action :authenticate_admin!
+  
+
   def index
     @orders = Order.all
     @page = Item.all.page(params[:page]).per(10)
