@@ -2,6 +2,7 @@ class Customers::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @page = Item.all.page(params[:page]).per(5)
   end
 
   def show
