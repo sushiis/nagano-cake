@@ -9,7 +9,7 @@
     <div class="col-5">
       <h3><%= @item.name %></h3>
       <p><%= <@item.introduction %></p>
-      <h3>¥<%= ((@item.price * 1.1).round(2)).ceil %><small>(税込)</small></h3>
+      <h3>¥<%= ((@item.price.to_i * 1.1).round(2)).ceil %><small>(税込)</small></h3>
 
   <%= form_with(model: @cart_item,url:'/cart_items',local:true) do |f| %>
     <%= f.select :amount, options_for_select(((1..20).to_a)),{ include_blank: '個数選択'} %>
