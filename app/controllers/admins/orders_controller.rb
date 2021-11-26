@@ -11,9 +11,14 @@ class Admins::OrdersController < ApplicationController
   
   def update
     order = Order.find(params[:id])
-    order_details = order.order_details
-    order.update(order_params)
-    redirect_to admins_order_path(order.id)
+    if order.update(order_params)
+      redirect_to admins_order_path(order.id)
+    else
+      @order = Order.find(params[:id])
+      @order_derails = @order.order_details
+      render :show
+    end
+      
   end
   
   private
