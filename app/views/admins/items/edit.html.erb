@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-6 offset-3">
-      <%= form_with model: @item,url: "/admin/items/#{@item.id}", local:true do |f| %>
+      <%= form_with model: @item, url: admins_item_path(@item.id), local:true do |f| %>
       <table>
         <tbody>
           <tr>
