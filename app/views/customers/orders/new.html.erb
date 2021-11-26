@@ -5,27 +5,33 @@
     <h3 class ="title">注文情報入力</h3>
       <h4>支払方法</h4>
       <div class ="item">
-        <label>
-          <%= f.radio_button :payment_method, :"クレジットカード" %>クレジットカード
-        </label>
-        <label>
-          <%= f.radio_button :payment_method, :"銀行振込" %>銀行振込
-        </label>
+        <div>
+          <%= form_with model: @order, url: orders_path, local: true do |f| %>
+            <%= f.radio_button :way, Order.ways.key(0) %>
+            <%= f.label :way, Order.ways_i18n["クレジットカード"] %>
+
+            <%= f.radio_button :way, Order.ways.key(1) %>
+            <%= f.label :way, Order.ways_i18n["銀行振込"]%>
+        </div>
       </div>
 
       <h4 class ="mt-4">お届け先</h4>
       <div class ="item">
         <div class ="customer_address">
+          <%= field_for 
+          <%= f.radio_button :address, "a" %>
+          <%= f.label :address, current_customer.address %>
+
           <label>
             ご自身の住所</br>
-            〒</br>
+            〒<%= current_customer.address %></br>
           </label>
         </div>
       </div>
 
       <div class ="record_address">
         <label>
-          登録済住所から選択</br>
+          <%= f.collection_select :customer_id, Address.all, :id, :address, include_blank: "登録先住所から選択" %></br>
         </label>
       </div>
 

@@ -9,5 +9,10 @@ class Customers::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = Order.order_details
   end
+  
+  def new
+    @order = Order.new
+    @customer = current_customer
+  end
 
 end
