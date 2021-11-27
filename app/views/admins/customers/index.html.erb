@@ -20,7 +20,7 @@
               <th><%= link_to admins_customer_path(customer.id) do %><%= customer.last_name %><%= customer.farst_name %><% end %></th>
               <th><%= customer.email %></th>
               <th>
-                <% if @customer.is_subscribed == false %>
+                <% if customer.is_subscribed == false %>
                   <span class="text-success">有効</span>
                 <% else %>
                   <span class="text-secondary">退会</span>
