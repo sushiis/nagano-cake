@@ -20,10 +20,10 @@
           <tr>
             <th scope="row"><%= attachment_image_tag cart_item.item, :image, size: "50x40" %>  <%= cart_item.item.name %></th>
             <td><%= cart_item.item.with_tax_price %></td>
-            <%= form_with(model: cart_item,url:'/cart_items',local:true) do |f| %>
-            <td><%= f.number_field :amount, min:1, max:20 %>  <%= link_to '変更', "/cart_items/current_cart", method: :update, class:"btn btn-success" %></td>
+            <%= form_with(model: cart_item,url: cart_item_path(cart_item.id), local:true) do |f| %>
+            <td><%= f.number_field :amount, min:1, max:20 %>  <%= f.submit "変更", class: "btn btn-success ml-2" %></td>
             <% end %>
-            <td><%= cart_item.subtotal %></td>
+            <td><%= cart_item.sum_of_price %></td>
             <td><%= link_to '削除', cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
           </tr>
           <% end %>
@@ -37,9 +37,9 @@
     <div class="col">
       <table class="table table-bordered">
         <td>合計金額</td>
-        <% @cart_items.each do |cart_item| %>
-        <td><%= cart_item.subtotal %></td>
-        <% end %>
+        <%# @cart_items.each do |cart_item| %>
+        <td><%= @total.round.to_s(:delimited)%></td>
+        <%# end %>
 
       </table>
     </div>

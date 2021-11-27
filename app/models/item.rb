@@ -3,11 +3,11 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :order_details
   attachment :image
-  
+
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-  validates :image_id, presence: true
+  validates :image, presence: true
   validates :status, presence: true
 
   def with_tax_price
