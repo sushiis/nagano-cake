@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <th><%= @order.postal_code %>  <%= @order.address %><br/><%= @order.customer.name %></th>
+          <th><%= @order.postal_code %>  <%= @order.address %><br/><%= @order.name %></th>
         </tr>
         <tr>
           <th>支払方法</th>
@@ -32,6 +32,7 @@
             <%= form_with(model: @order, url: admins_order_path, local: true, class: "form-row") do |f| %>
             <%= f.select :status, Order.statuses.keys.to_a %>
             <%= link_to "更新", admins_order_path, class:"btn btn-success" %>
+            <% end %>
           </th>
         </tr>
       </table>
