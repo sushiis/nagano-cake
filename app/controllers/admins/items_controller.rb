@@ -17,7 +17,8 @@ class Admins::ItemsController < ApplicationController
       redirect_to admins_items_path
     else
       render :new
-      
+    end
+
   end
 
   def show

@@ -14,7 +14,7 @@
 
       <h3>¥<%= ((@item.price.to_i * 1.1).round(2)).ceil %><small>(税込)</small></h3>
 
-  <%= form_with(model: @cart_item,url:'/cart_items',local:true) do |f| %>
+  <%= form_with(model: @cart_item,url:cart_items_path ,method: :POST) do |f| %>
     <%= f.hidden_field :item_id, :value => @item.id %>
     <%= f.select :amount, options_for_select(((1..20).to_a)),{ include_blank: '個数選択'} %>
     <%= f.submit "カートに入れる", class: "btn btn-success ml-2" %>
