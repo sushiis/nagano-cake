@@ -4,7 +4,7 @@ class Customers::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items.all
-   # @subtotal = cart_items.sum(:price)
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   # 商品一覧画面から、「商品購入」を押した時のアクション
@@ -33,8 +33,9 @@ class Customers::CartItemsController < ApplicationController
 
   # カート詳細画面から、「更新」を押した時のアクション
   def update
-    @cart_item.update(amount: params[:amount].to_i)
-    redirect_to current_cart
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(amount: params[:cart_item][:amount].to_i)
+    redirect_back fallback_location: @cart_item
   end
 
 # カート詳細画面から、「削除」を押した時のアクション
