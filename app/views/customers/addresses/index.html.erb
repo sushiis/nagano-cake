@@ -38,15 +38,15 @@
             <th></th>
           </tr>
         </thead>
-        <% @addresses.each do |shipping_address| %>
+        <% @addresses.each do |address| %>
         <tbody>
           <tr>
-            <th><%= addresses.postal_code %></th>
-            <th><%= addresses.address %></th>
-            <th><%= addresses.name %></th>
+            <th><%= address.postal_code %></th>
+            <th><%= address.address %></th>
+            <th><%= address.name %></th>
             <th>
-              <%= link_to "編集する", edit_addresses_path(addresses), class: 'btn btn-success' %>
-              <%= link_to "削除する", addresses_path(addresses), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
+              <%= link_to "編集する", edit_address_path(address), class: 'btn btn-success' %>
+              <%= link_to "削除する", address_path(address), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
             </th>
           </tr>
         </tbody>
