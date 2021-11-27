@@ -18,45 +18,43 @@
       <h4 class ="mt-4">お届け先</h4>
       <div class ="item">
         <div class ="customer_address">
-          <%= field_for 
-          <%= f.radio_button :address, "a" %>
-          <%= f.label :address, current_customer.address %>
-
-          <label>
-            ご自身の住所</br>
-            〒<%= current_customer.address %></br>
-          </label>
+          <%= f.radio_button :address_option, 0 %>
+          <%= f.label :ご自身のお届け先 %>
+          〒<%= current_customer.address %>
         </div>
       </div>
 
       <div class ="record_address">
         <label>
-          <%= f.collection_select :customer_id, Address.all, :id, :address, include_blank: "登録先住所から選択" %></br>
+          <%= f.radio_button :address_option, 0 %>
+          <%= f.label :登録済住所から選択 %>
+          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address), include_blank: "登録先住所から選択" %></br>
         </label>
       </div>
 
       <div class ="new_address">
-        <label></br>
-          新しいお届け先</br>
+        <label>
           <table class="table table-borderless">
             <tbody>
               <tr>
-                <td>郵便番号(ハイフンなし)</td>
-                <td><%= f.text_field %></td>
+                <%= f.radio_button :address_option, 2 %>
+                <%= f.label :新しいお届け先 %>
+                <td><%= f.label :郵便番号（ハイフンなし） %></td>
+                <td><%= f.text_field :postal_code %></td>
               </tr>
               <tr>
-                <td>住所</td>
-                <td><%= f.text_field %></td>
+                <td><%= f.label :住所 %></td>
+                <td><%= f.text_field :address %></td>
               </tr>
               <tr>
-                <td>宛名</td>
-                <td><%= f.text_field %></td>
+                <td><%= f.label :宛名 %></td>
+                <td><%= f.text_field :name %></td>
               </tr>
             </tbody>
           </table>
         </label>
       </div>
-      <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+      <%= f.submit orders_confirm_path, '確認画面へ進む', class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
