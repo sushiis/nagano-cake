@@ -22,8 +22,8 @@
               <%= order.customer.last_name %><%= order.customer.farst_name %>
             </td>
             <td>
-              <%= @items.each do |item| %>
-                <div><%= item.name %></div>
+              <%= order.order_details.each do |order_detail| %>
+                <div><%= order_detail.item.name %></div>
               <% end %>
             </td>
             <td><%= order.total_price %>円</td>
