@@ -34,6 +34,7 @@ scope module: :customers do
   #public_orders
   resources :orders, only: [:index, :show, :new, :create]
   post "/orders/confirm" => "orders#confirm"
+
   get "/thanx" => "orders#thanx"
   #public_addresses
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
