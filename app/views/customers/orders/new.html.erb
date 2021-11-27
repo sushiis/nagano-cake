@@ -3,10 +3,11 @@
     <div class="col-md-9 mt-5">
 
     <h3 class ="title">注文情報入力</h3>
+      <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
+
       <h4>支払方法</h4>
       <div class ="item">
         <div>
-          <%= form_with model: @order, url: orders_path, local: true do |f| %>
             <%= f.radio_button :way, Order.ways.key(0) %>
             <%= f.label :way, Order.ways_i18n["クレジットカード"] %>
 
@@ -26,7 +27,7 @@
 
       <div class ="record_address">
         <label>
-          <%= f.radio_button :address_option, 0 %>
+          <%= f.radio_button :address_option, 1 %>
           <%= f.label :登録済住所から選択 %>
           <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address), include_blank: "登録先住所から選択" %></br>
         </label>
@@ -54,7 +55,7 @@
           </table>
         </label>
       </div>
-      <%= f.submit orders_confirm_path, '確認画面へ進む', class: "btn btn-primary" %>
+      <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
