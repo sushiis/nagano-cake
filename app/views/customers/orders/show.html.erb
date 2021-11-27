@@ -21,7 +21,7 @@
             <td>
               <%= @order.postal_code %><br>
               <%= @order.address %><br>
-              <%= @order.last_name %><%= @order.farst_name %>
+              <%= @order.name %>
             </td>
           </tr>
           <tr>
@@ -30,7 +30,7 @@
           </tr>
           <tr>
             <th>ステータス</th>
-            <td><%= @order.stasus %></td>
+            <td><%= @order.status %></td>
           </tr>
         </tbody>
       </table>
@@ -73,10 +73,10 @@
           </tr>
           <% @order_details.each do |order_detail| %>
             <tr>
-              <td><%= order_detail.name %></td>
+              <td><%= order_detail.item.name %></td>
               <td><%= order_detail.price %></td>
               <td><%= order_detail.amount %></td>
-              <td><%= (order_detail.price * order_detail.amount %></td>
+              <td><%= (order_detail.price * order_detail.amount) %></td>
             </tr>
           <% end %>
         </table>

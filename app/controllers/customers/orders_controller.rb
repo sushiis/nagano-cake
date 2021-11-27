@@ -7,7 +7,7 @@ class Customers::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = Order.order_details
+    @order_details = @order.order_details
   end
 
   def new
@@ -31,17 +31,39 @@ class Customers::OrdersController < ApplicationController
       @order.name = current_customer.postal_code
     end
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @postage = 800
 
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.postage = 800
+    @cart_items = current_customer.cart_items
+    @order.total_price = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @order.status = 0
+    @order.customer_id = current_customer.id
+    @order.save
+      @cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item.id
+        @order_detail.amount = cart_item.amount
+        @order_detail.price = cart_item.item.price
+        @order_detail.making_status = 0
+        @order_detail.save
+      end
+    @cart_items.destroy_all
+    redirect_to thanx_path
+  end
+
+  def thanx
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:name, :address, :way, :postal_code )
+    params.require(:order).permit(:name, :address, :way, :postal_code, :postage, :total_price, :status)
   end
 
 end
